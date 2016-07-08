@@ -13,7 +13,7 @@ public class DBCon {
 
     {
         sDbDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        sDbUrl = "jdbc:sqlserver://nanoloop.ddns.net:1433;" + "databaseName=ZPA;";
+        sDbUrl = "jdbc:sqlserver://192.168.7.21:1433;" + "databaseName=ZPA;";
         sUsr = "sql-member";
         sPwd = "Swordfish2016";
     }
