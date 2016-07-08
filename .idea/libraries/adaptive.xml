@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="adaptive">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Desktop/SQL/sqljdbc_4.1/deu/samples/adaptive" />
+      <root url="file://$USER_HOME$/Desktop/SQL/sqljdbc_4.1/deu/samples/connections" />
+      <root url="file://$USER_HOME$/Desktop/SQL/sqljdbc_4.1/deu/samples/datatypes" />
+      <root url="file://$USER_HOME$/Desktop/SQL/sqljdbc_4.1/deu/samples/resultsets" />
+      <root url="file://$USER_HOME$/Desktop/SQL/sqljdbc_4.1/deu/samples/sparse" />
+    </SOURCES>
+  </library>
+</component>
