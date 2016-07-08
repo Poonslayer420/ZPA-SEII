@@ -37,7 +37,7 @@ public class Registrieren extends JFrame {
     Registrieren() throws SQLException {
 
         super("ZPA Registrierung");
-        setSize(450, 500);
+        setSize(450, 600);
         setLocationRelativeTo(null);
         panel.setLayout(null);
 
