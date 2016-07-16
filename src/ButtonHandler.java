@@ -124,9 +124,11 @@ public class ButtonHandler implements ActionListener {
 
                         gui.setLogin();
 
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Fehler bei der Registrierung! Bitte versuchen es später noch einmal");
                     }
                 }
-                JOptionPane.showMessageDialog(null, "Fehler bei der Registrierung! Bitte versuchen es später noch einmal");
+
             }
 
         } catch (

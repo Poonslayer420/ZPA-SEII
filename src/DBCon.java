@@ -131,7 +131,6 @@ public class DBCon {
 
         return booli;
 
-
     }
 
 
@@ -187,13 +186,11 @@ public class DBCon {
     // if transaction concept 2 Phase Commit is applied
     public void commit() throws SQLException {
         cn.commit();
-        disconnect();
     }
 
     // if transaction concept 2 Phase Commit is applied
     public void rollback() throws SQLException {
         cn.rollback();
-        disconnect();
     }
 
 }
