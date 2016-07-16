@@ -101,6 +101,47 @@ public class DBCon {
         return true;
     }
 
+    public ResultSet getRs(String str, Integer i) {
+        String SQL = null;
+        try {
+            // Create an SQL statement that returns data.
+            if (i == 1) {
+                SQL = "SELECT * FROM studierende WHERE benutzer=" + "'" + str + "'"; // Returns Username
+            } else if (i == 2) {
+                SQL = "SELECT * FROM studierende WHERE benutzer=" + "'" + str + "'" + "OR passwort=" + "'" + str + "'"; //Returns PW
+            } else if (i == 3) {
+                SQL = "SELECT * FROM studierende WHERE matrikelnummer=" + str;
+            } else if (i == 4) {
+                SQL = "SELECT * FROM studierende WHERE ifwkennnung=" + str;
+            } else if (i == 5) {
+                SQL = "SELECT * FROM studierende WHERE nachname=" + "'" + str + "'";
+            } else if (i == 6) {
+                SQL = "SELECT * FROM studierende WHERE vorname=" + "'" + str + "'";
+            } else if (i == 7) {
+                SQL = "SELECT * FROM studierende WHERE geburtsdatum=" + "'" + str + "'";
+            } else if (i == 8) {
+                SQL = "SELECT * FROM studierende WHERE straße=" + "'" + str + "'";
+            } else if (i == 9) {
+                SQL = "SELECT * FROM studierende WHERE email=" + "'" + str + "'";
+            } else if (i == 10) {
+                SQL = "SELECT * FROM studierende WHERE immatrikulationsstatus=" + str;
+            } else if (i == 11) {
+                SQL = "SELECT * FROM studierende WHERE passwortreset=" + str;
+            } else if (i == 12) {
+                SQL = "SELECT * FROM studierende";
+            } else {
+                return null;
+            }
+            // Execute an SQL statement that returns data.
+            st = cn.createStatement();
+            rs = st.executeQuery(SQL);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
     // save closing SQL query
     public void disconnect() throws SQLException {
         if (st != null) st.close();
