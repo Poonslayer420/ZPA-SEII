@@ -7,12 +7,12 @@ public class GUI implements Decoupling {
     public JFrame login, registrieren, LoggedIn;
     public Container contentpane1;
     public JPanel contentpane2, contentpane3;
-    public JButton blogin,babbrechen,breg, bregister;
-    public JTextField tfgroup2, txuser, txmatrikel;
+    public JButton blogin, babbrechen, breg, bregister;
+    public JTextField txuser, txmatrikel, txifw, txbenutzer, txvorname, txnachname, txstraße, txgeburtsdatum;
     public JLabel txuserLabel, passLabel, welcome;
     public ButtonHandler control;
     public JTableview tableview;
-    public JPasswordField pass;
+    public JPasswordField pass, pass2, pass3;
     JScrollPane scrollPane;
 
 
@@ -27,11 +27,57 @@ public class GUI implements Decoupling {
         return name;
     }
 
+    public String getMatrikel() {
+        String matrikel = txmatrikel.getText();
+        return matrikel;
+    }
+
+    public String getIfw() {
+        String ifw = txifw.getText();
+        return ifw;
+    }
+
+    public String getUser() {
+        String user = txbenutzer.getText();
+        return user;
+    }
+
+    public String getVorname() {
+        String name = txvorname.getText();
+        return name;
+    }
+
+    public String getNachname() {
+        String name = txnachname.getText();
+        return name;
+    }
+
+    public String getStraße() {
+        String street = txstraße.getText();
+        return street;
+    }
+
+    public String getBirthday() {
+        String bday = txgeburtsdatum.getText();
+        return bday;
+    }
+
 
     public String getPassword() {
-        String pw = String.valueOf(pass.getPassword());
+        String pw = String.valueOf(pass.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
         return pw;
     }
+
+    public String getPassword2() {
+        String pw = String.valueOf(pass2.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
+        return pw;
+    }
+
+    public String getPassword3() {
+        String pw = String.valueOf(pass3.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
+        return pw;
+    }
+
 
     public GUI() {
 
@@ -57,7 +103,7 @@ public class GUI implements Decoupling {
 
         blogin = new JButton("Login");
         bregister = new JButton("Registrieren");
-        breg = new JButton("UPDATE");
+        breg = new JButton("REGISTRIEREN!");
         txuser = new JTextField(15);
         txuserLabel = new JLabel("Benutzer:");
         pass = new JPasswordField(15);
@@ -111,16 +157,6 @@ public class GUI implements Decoupling {
     public void launchSecondJFrame() {
         // set the bounds of the components and add to content pane
 
-        JTextField txmatrikel = new JTextField();
-        JTextField txifw = new JTextField();
-        JTextField txbenutzer = new JTextField();
-        JTextField txvorname = new JTextField();
-        JTextField txnachname = new JTextField();
-        JTextField txstraße = new JTextField();
-        JTextField txgeburtsdatum = new JTextField();
-        JTextField txpasswort = new JTextField();
-        JTextField txpasswortReRun = new JTextField();
-
         JLabel jlmatrikel = new JLabel("Deine Matrikelnummer:");
         JLabel jlifw = new JLabel("Deine IFW-Kennung:");
         JLabel jlbenutzer = new JLabel("Bitte wähle deinen Benutzernamen:");
@@ -130,6 +166,16 @@ public class GUI implements Decoupling {
         JLabel jlgeburtsdatum = new JLabel("Geburtsdatum:");
         JLabel jlpasswort = new JLabel("Passwort:");
         JLabel jlpasswortReRun = new JLabel("Passwort:");
+
+        txmatrikel = new JTextField(8);
+        txifw = new JTextField(5);
+        txbenutzer = new JTextField(30);
+        txvorname = new JTextField(30);
+        txnachname = new JTextField(30);
+        txstraße = new JTextField(30);
+        txgeburtsdatum = new JTextField(10);
+        pass = new JPasswordField(30);
+        pass2 = new JPasswordField(30);
 
         txmatrikel.setBounds(240, 50, 150, 20);
         jlmatrikel.setBounds(20, 50, 150, 20);
@@ -145,9 +191,9 @@ public class GUI implements Decoupling {
         jlstraße.setBounds(20, 300, 120, 20);
         txgeburtsdatum.setBounds(240, 350, 150, 20);
         jlgeburtsdatum.setBounds(20, 350, 120, 20);
-        txpasswort.setBounds(240, 400, 150, 20);
+        pass.setBounds(240, 400, 150, 20);
         jlpasswort.setBounds(20, 400, 120, 20);
-        txpasswortReRun.setBounds(240, 450, 150, 20);
+        pass2.setBounds(240, 450, 150, 20);
         jlpasswortReRun.setBounds(20, 450, 120, 20);
 
         breg.setBounds(20, 500, 150, 20);
@@ -167,9 +213,9 @@ public class GUI implements Decoupling {
         contentpane2.add(jlstraße);
         contentpane2.add(txgeburtsdatum);
         contentpane2.add(jlgeburtsdatum);
-        contentpane2.add(txpasswort);
+        contentpane2.add(pass);
         contentpane2.add(jlpasswort);
-        contentpane2.add(txpasswortReRun);
+        contentpane2.add(pass2);
         contentpane2.add(jlpasswortReRun);
 
         contentpane2.add(breg);
@@ -181,24 +227,24 @@ public class GUI implements Decoupling {
         registrieren.setVisible(true);
     }
 
-    public void launchLoggedIn(){
+    public void launchLoggedIn() {
         // set the bounds of the components and add to content pane
 
         LoggedIn.setLocationRelativeTo(null);
 
-        welcome.setBounds(70,150,150,60);
+        welcome.setBounds(70, 150, 150, 60);
         babbrechen.setBounds(70, 200, 150, 60);
 
         contentpane3.add(welcome);
         contentpane3.add(babbrechen);
 
-        LoggedIn.setSize(600,400);
+        LoggedIn.setSize(600, 400);
         LoggedIn.setLocationRelativeTo(null);
         LoggedIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LoggedIn.setVisible(true);
     }
 
-    public void setLoggedIn(){
+    public void setLoggedIn() {
         // hide first (current) frame
         this.login.setVisible(false);
         this.launchLoggedIn();
@@ -212,7 +258,7 @@ public class GUI implements Decoupling {
 
     public void setLogin() {
         // 5. update JTable content to gain reliability instead of performance
-       // tableview.updateSQLTable("", 12);
+        // tableview.updateSQLTable("", 12);
         this.login.setVisible(true);
         this.LoggedIn.setVisible(false);
         // deallocate frame registrieren

@@ -8,10 +8,21 @@ public interface Decoupling {
 
 
     public String getFullName();
+    public String getMatrikel();
+    public String getIfw();
+    public String getUser();
+    public String getVorname();
+    public String getNachname();
+    public String getStraße();
+    public String getBirthday();
+
+    public String getPassword();
+    public String getPassword2();
+    public String getPassword3();
 
     public void setRegistration();
     public void setLogin();
     public void setLoggedIn();
 
-    public String getPassword();
+
 }

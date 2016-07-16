@@ -51,8 +51,8 @@ public class ZPAMainTEST {
         ZPA.connect_DB();
 
         String SetValue = "TestUser";
-        Integer Mtrikel = 99999999;
-        Integer IFW = 99999;
+        String Mtrikel = "99999999";
+        String IFW = "99999";
 
         return ZPA.executeSqlQuery(SetValue,Mtrikel,IFW, 1);
 
