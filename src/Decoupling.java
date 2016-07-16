@@ -24,5 +24,8 @@ public interface Decoupling {
     public void setLogin();
     public void setLoggedIn();
 
+    public void setFullName(String str);
+    public void setPass(String str);
+
 
 }

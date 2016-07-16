@@ -9,7 +9,7 @@ public class ButtonHandler implements ActionListener {
     Decoupling gui;
 
     public ButtonHandler(Decoupling gui) {
-        // 1. create reference to GUI
+        //create reference to GUI
         this.gui = gui;
     }
 

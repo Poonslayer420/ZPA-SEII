@@ -27,6 +27,11 @@ public class GUI implements Decoupling {
         return name;
     }
 
+    public void setFullName(String str) {
+        //txuser = new JTextField(str);
+        txuser.setText(str);
+    }
+
     public String getMatrikel() {
         String matrikel = txmatrikel.getText();
         return matrikel;
@@ -66,6 +71,10 @@ public class GUI implements Decoupling {
     public String getPassword() {
         String pw = String.valueOf(pass.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
         return pw;
+    }
+
+    public void setPass(String str) {
+        pass.setText(str);
     }
 
     public String getPassword2() {
@@ -127,8 +136,6 @@ public class GUI implements Decoupling {
         blogin.addActionListener(control);
         babbrechen.addActionListener(control);
         breg.addActionListener(control);
-
-
     }
 
     public void launchFirstJFrame() throws SQLException {
