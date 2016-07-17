@@ -1,3 +1,5 @@
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -74,6 +76,8 @@ public class DBCon {
             while (rs.next()) {
                 returnValue = rs.getString(i);
             }
+        } catch (SQLServerException se){
+            se.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -180,17 +184,7 @@ public class DBCon {
     public void disconnect() throws SQLException {
         if (st != null) st.close();
         if (rs != null) rs.close();
-    }
-
-
-    // if transaction concept 2 Phase Commit is applied
-    public void commit() throws SQLException {
-        cn.commit();
-    }
-
-    // if transaction concept 2 Phase Commit is applied
-    public void rollback() throws SQLException {
-        cn.rollback();
+        if (cn != null) cn.close();
     }
 
 }
