@@ -1,7 +1,12 @@
 <component name="libraryTable">
   <library name="sqljdbc41">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/Microsoft JDBC Driver 4.2 for SQL Server/sqljdbc_4.2/enu/sqljdbc42.jar!/" />
+    </CLASSES>
     <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/src/Microsoft JDBC Driver 4.2 for SQL Server" />
+    </NATIVE>
     <SOURCES />
   </library>
 </component>

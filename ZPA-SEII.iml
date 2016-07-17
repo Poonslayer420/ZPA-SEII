@@ -17,5 +17,6 @@
     <orderEntry type="library" name="org.hamcrest:hamcrest-all:1.3" level="project" />
     <orderEntry type="library" name="sqljdbc42" level="project" />
     <orderEntry type="library" name="sess16uebungsblatt-9" level="project" />
+    <orderEntry type="library" name="abbot:abbot:1.4.0" level="project" />
   </component>
 </module>

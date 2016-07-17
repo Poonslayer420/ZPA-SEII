@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="abbot:abbot:1.4.0" type="repository">
+    <properties maven-id="abbot:abbot:1.4.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/abbot-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.8.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
