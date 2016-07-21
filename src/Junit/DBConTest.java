@@ -1,16 +1,14 @@
 
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import org.assertj.core.api.Assertions;
-import org.junit.*;
-import org.hamcrest.*;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 
 public class DBConTest {
@@ -139,7 +137,7 @@ public class DBConTest {
 
         //test that correct matrikelnummer is returned and false matrikelnummer returns null
         Assertions.assertThat(SQLTest.getData(actualMatrikel, 3)).isEqualTo(actualMatrikel);
-        Assertions.assertThat(SQLTest.getData("00000", 3)).isEqualTo(null);
+        Assertions.assertThat(SQLTest.getData("00990", 3)).isEqualTo(null);
 
         //test that correct ifwKennung is returned and false ifw Kennung returns null
         Assertions.assertThat(SQLTest.getData(actualifwKennung, 4)).isEqualTo(actualifwKennung);
@@ -335,6 +333,26 @@ public class DBConTest {
 
         //close connection
         SQLTest.disconnect();
+
+    }
+
+
+    //Test that SQL Exceptions are thrown - cannot be tested properly
+
+    @Test
+    public void testSQLException() throws SQLException {
+
+        try {
+            // Do something you expect to fail.
+            DBCon SQLTest = new DBCon();
+            SQLTest.connect_DB();
+            SQLTest.getData("string", 1);
+
+        } catch (SQLException e) { // Expected exception type.
+            Assert.assertEquals(e.getMessage(), "SQL Exception");
+
+        }
+
 
     }
 

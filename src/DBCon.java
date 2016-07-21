@@ -22,6 +22,7 @@ public class DBCon {
 
     // default constructor:
     public DBCon() throws SQLException {
+
     }
 
     // connect to database
@@ -79,7 +80,7 @@ public class DBCon {
         } catch (SQLServerException se){
             se.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("SQL Exception" + e.getMessage());
         }
         return returnValue;
     }
