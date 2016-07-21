@@ -215,6 +215,7 @@ public class GUI implements Decoupling {
         LoggedAdminIn.setLocationRelativeTo(null);
         LoggedAdminIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LoggedAdminIn.setVisible(true);
+        
     }
 
     public void setLoggedIn() {
