@@ -29,7 +29,7 @@ public class ButtonHandler implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Bitte Passwordfeld füllen!");
                     } else {
                         if (ZPA.getData(puname, 1) == null) {
-                            JOptionPane.showMessageDialog(null, "Dein eingegebener Benutzername existiert nicht!");
+                            JOptionPane.showMessageDialog(null, "Dein eingegebener Benutzername existiert nicht! Bitte registriere dich.");
 
                         } else {
                             if (ZPA.getData(puname, 1).equals(puname) && ZPA.getData(puname, 2).equals(ppaswd)) {
@@ -68,7 +68,7 @@ public class ButtonHandler implements ActionListener {
                     return;
                 } else {
                     if (sifw.equals((""))) {
-                        JOptionPane.showMessageDialog(null, "Bitte IFW-KEnnung füllen!");
+                        JOptionPane.showMessageDialog(null, "Bitte IFW-Kennung füllen!");
                         return;
                     } else {
                         if (sbenutzer.equals("")) {
@@ -88,7 +88,7 @@ public class ButtonHandler implements ActionListener {
                                         return;
                                     } else {
                                         if (sgeburtstag.equals("")) {
-                                            JOptionPane.showMessageDialog(null, "Bitte Geburtstag füllen!");
+                                            JOptionPane.showMessageDialog(null, "Bitte Geburtsdatum füllen!");
                                             return;
                                         } else {
                                             if (spasswort.equals((""))) {
@@ -129,7 +129,7 @@ public class ButtonHandler implements ActionListener {
                         gui.setLogin();
 
                     }else {
-                        JOptionPane.showMessageDialog(null, "Fehler bei der Registrierung! Bitte versuchen es später noch einmal");
+                        JOptionPane.showMessageDialog(null, "Fehler bei der Registrierung! Bitte versuche es später noch einmal");
                     }
                 }
 
