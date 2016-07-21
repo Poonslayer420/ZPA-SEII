@@ -76,7 +76,7 @@ public class DBCon {
             while (rs.next()) { //while is a must for creating the Index of the ResultSet.
                 returnValue = rs.getString(i);
             }
-        } catch (SQLServerException se){
+        } catch (SQLServerException se) {
             se.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,6 +136,25 @@ public class DBCon {
         return booli;
 
     }
+
+    public boolean checkForAdminStatus(String str) throws SQLException {
+        String SQL = null;
+        Boolean booli = false;
+
+        SQL = "SELECT * FROM studierende WHERE benutzer=" + "'" + str + "'"; // Returns Username
+
+        st = cn.createStatement();
+        rs = st.executeQuery(SQL);
+
+        while (rs.next()) {
+            booli = rs.getInt(10) == 2;
+        }
+
+        return booli;
+
+    }
+
+
 
 
     public ResultSet getRs(String str, Integer i) {

@@ -33,7 +33,11 @@ public class ButtonHandler implements ActionListener {
 
                         } else {
                             if (ZPA.getData(puname, 1).equals(puname) && ZPA.getData(puname, 2).equals(ppaswd)) {
-                                gui.setLoggedIn();
+                                if (ZPA.checkForAdminStatus(puname)){
+                                    gui.setAdminLoggedIn();
+                                }else {
+                                    gui.setLoggedIn();
+                                }
 
                             } else {
                                 JOptionPane.showMessageDialog(null, "Falsches Password und/oder Benutzername ist falsch!");

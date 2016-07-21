@@ -4,9 +4,9 @@ import java.sql.SQLException;
 
 public class GUI implements Decoupling {
 
-    public JFrame login, registrieren, LoggedIn;
+    public JFrame login, registrieren, LoggedIn, LoggedAdminIn;
     public Container contentpane1;
-    public JPanel contentpane2, contentpane3;
+    public JPanel contentpane2, contentpane3, contentpane4;
     public JButton blogin, babbrechen, breg, bregister;
     public JTextField txuser, txmatrikel, txifw, txbenutzer, txvorname, txnachname, txstraße, txgeburtsdatum;
     public JLabel txuserLabel, passLabel, welcome;
@@ -19,84 +19,20 @@ public class GUI implements Decoupling {
     public static void main(String[] args) throws SQLException {
         GUI guiApp;
         guiApp = new GUI();
-        guiApp.launchFirstJFrame();
+        guiApp.launchLoginJFrame();
     }
-
-    public String getFullName() {
-        String name = txuser.getText();
-        return name;
-    }
-
-    public void setFullName(String str) {
-        //txuser = new JTextField(str);
-        txuser.setText(str);
-    }
-
-    public String getMatrikel() {
-        String matrikel = txmatrikel.getText();
-        return matrikel;
-    }
-
-    public String getIfw() {
-        String ifw = txifw.getText();
-        return ifw;
-    }
-
-    public String getUser() {
-        String user = txbenutzer.getText();
-        return user;
-    }
-
-    public String getVorname() {
-        String name = txvorname.getText();
-        return name;
-    }
-
-    public String getNachname() {
-        String name = txnachname.getText();
-        return name;
-    }
-
-    public String getStraße() {
-        String street = txstraße.getText();
-        return street;
-    }
-
-    public String getBirthday() {
-        String bday = txgeburtsdatum.getText();
-        return bday;
-    }
-
-
-    public String getPassword() {
-        String pw = String.valueOf(pass.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
-        return pw;
-    }
-
-    public void setPass(String str) {
-        pass.setText(str);
-    }
-
-    public String getPassword2() {
-        String pw = String.valueOf(pass2.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
-        return pw;
-    }
-
-    public String getPassword3() {
-        String pw = String.valueOf(pass3.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
-        return pw;
-    }
-
 
     public GUI() {
 
         login = new JFrame("GUI1: Login");
         registrieren = new JFrame("GUI2: Registrieren");
         LoggedIn = new JFrame("GUI3: WELCOME");
+        LoggedAdminIn = new JFrame("GUI3: ADMINMODE");
 
         contentpane1 = new Container();
         contentpane2 = new JPanel();
         contentpane3 = new JPanel();
+        contentpane4 = new JPanel();
 
         // 1. ActionListener "control" is created
         //  GUI object is assigned to "control.gui"
@@ -108,6 +44,8 @@ public class GUI implements Decoupling {
         contentpane2.setLayout(null);
         contentpane3.setLayout(null);
         LoggedIn.setContentPane(contentpane3);
+        contentpane4.setLayout(null);
+        LoggedAdminIn.setContentPane(contentpane4);
 
 
         blogin = new JButton("Login");
@@ -138,7 +76,7 @@ public class GUI implements Decoupling {
         breg.addActionListener(control);
     }
 
-    public void launchFirstJFrame() throws SQLException {
+    public void launchLoginJFrame() throws SQLException {
         // set the bounds of the components and add to content pane
         txuser.setBounds(140, 30, 150, 20);
         txuserLabel.setBounds(20, 30, 150, 20);
@@ -161,7 +99,7 @@ public class GUI implements Decoupling {
     }
 
 
-    public void launchSecondJFrame() {
+    public void launchRegistrationJFrame() {
         // set the bounds of the components and add to content pane
 
         JLabel jlmatrikel = new JLabel("Deine Matrikelnummer:");
@@ -239,7 +177,7 @@ public class GUI implements Decoupling {
 
         LoggedIn.setLocationRelativeTo(null);
 
-        welcome.setBounds(70, 150, 150, 60);
+        welcome.setBounds(70, 150, 200, 60);
         babbrechen.setBounds(70, 200, 150, 60);
 
         contentpane3.add(welcome);
@@ -251,6 +189,34 @@ public class GUI implements Decoupling {
         LoggedIn.setVisible(true);
     }
 
+    public void launchAdminIn() throws SQLException {
+        // set the bounds of the components and add to content pane
+
+        LoggedAdminIn.setLocationRelativeTo(null);
+
+        babbrechen.setBounds(20, 280, 150, 50);
+        contentpane4.add(babbrechen);
+
+        if (tableview == null) {
+            // 1. create a JTable to a generic SQL Query
+            tableview = new JTableview("",12);
+            // 2. create JScrollPane with reference to the JTable
+            scrollPane = new JScrollPane(tableview.getSQLTable());
+            // 3. set bounds of the JTable with the JScrollPane
+            scrollPane.setBounds(20, 50, 550, 200);
+            // 4. add JTable with JScrollPane to the content pane
+            contentpane4.add(scrollPane);
+        } else {
+            // 5. update JTable content to gain reliability instead of performance
+            tableview.updateSQLTable("", 12);
+        }
+
+        LoggedAdminIn.setSize(600, 400);
+        LoggedAdminIn.setLocationRelativeTo(null);
+        LoggedAdminIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        LoggedAdminIn.setVisible(true);
+    }
+
     public void setLoggedIn() {
         // hide first (current) frame
         this.login.setVisible(false);
@@ -260,7 +226,7 @@ public class GUI implements Decoupling {
     public void setRegistration() {
         // hide first (current) frame
         this.login.setVisible(false);
-        this.launchSecondJFrame();
+        this.launchRegistrationJFrame();
     }
 
     public void setLogin() {
@@ -268,8 +234,84 @@ public class GUI implements Decoupling {
         // tableview.updateSQLTable("", 12);
         this.login.setVisible(true);
         this.LoggedIn.setVisible(false);
+        this.LoggedAdminIn.setVisible(false);
         // deallocate frame registrieren
         this.registrieren.dispose();
+    }
+
+    public void setAdminLoggedIn() {
+        // hide first (current) frame
+        this.login.setVisible(false);
+        try {
+            this.launchAdminIn();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getFullName() {
+        String name = txuser.getText();
+        return name;
+    }
+
+    public void setFullName(String str) {
+        //txuser = new JTextField(str);
+        txuser.setText(str);
+    }
+
+    public String getMatrikel() {
+        String matrikel = txmatrikel.getText();
+        return matrikel;
+    }
+
+    public String getIfw() {
+        String ifw = txifw.getText();
+        return ifw;
+    }
+
+    public String getUser() {
+        String user = txbenutzer.getText();
+        return user;
+    }
+
+    public String getVorname() {
+        String name = txvorname.getText();
+        return name;
+    }
+
+    public String getNachname() {
+        String name = txnachname.getText();
+        return name;
+    }
+
+    public String getStraße() {
+        String street = txstraße.getText();
+        return street;
+    }
+
+    public String getBirthday() {
+        String bday = txgeburtsdatum.getText();
+        return bday;
+    }
+
+
+    public String getPassword() {
+        String pw = String.valueOf(pass.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
+        return pw;
+    }
+
+    public void setPass(String str) {
+        pass.setText(str);
+    }
+
+    public String getPassword2() {
+        String pw = String.valueOf(pass2.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
+        return pw;
+    }
+
+    public String getPassword3() {
+        String pw = String.valueOf(pass3.getPassword()); //JPassword.getText is decprecated so we used this way. :-)
+        return pw;
     }
 
 
