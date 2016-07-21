@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class DBCon {
 
     // implement singleton pattern with static elements
-    private static dbConnect instance;
+
     private static Connection cn = null;
     private static Statement st = null;
     private static ResultSet rs = null;
@@ -73,7 +73,7 @@ public class DBCon {
             rs = st.executeQuery(SQL);
 
             // Iterate through the data in the result set and display it.
-            while (rs.next()) {
+            while (rs.next()) { //while is a must for creating the Index of the ResultSet.
                 returnValue = rs.getString(i);
             }
         } catch (SQLServerException se){

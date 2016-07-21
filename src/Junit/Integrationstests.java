@@ -63,7 +63,7 @@ public class Integrationstests {
         but.doClick();
 
         //Test that MessageDialog is shown
-        Assertions.assertThat(gui.login.isVisible()).isTrue();;
+        Assertions.assertThat(gui.login.isVisible()).isFalse();;
 
     }
 
