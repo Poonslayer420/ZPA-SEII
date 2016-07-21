@@ -90,9 +90,9 @@ public class GUI implements Decoupling {
 
     public GUI() {
 
-        login = new JFrame("GUI1: Login");
-        registrieren = new JFrame("GUI2: Registrieren");
-        LoggedIn = new JFrame("GUI3: WELCOME");
+        login = new JFrame("ZPA - Login");
+        registrieren = new JFrame("ZPA - Registrieren");
+        LoggedIn = new JFrame("ZPA - WELCOME");
 
         contentpane1 = new Container();
         contentpane2 = new JPanel();
